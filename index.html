@@ -4,56 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1F4E79">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>Предлоги времени · Practice</title>
+<title>Предлоги времени</title>
 <style>
-:root{--p:#1F4E79;--s:#2e7d32;--e:#c62828;--bg:#f5f7fa;--c:#fff;--t:#222;--m:#666;--b:#e0e4ea;--at:#e3f2fd;--on:#e8f5e9;--in:#fff3e0;--adv:#e8eaf6}
-[data-theme=dark]{--p:#5B9BD5;--s:#66bb6a;--e:#ef5350;--bg:#121820;--c:#1c2530;--t:#e8eaed;--m:#9aa0a6;--b:#2d3744;--at:#1a2a3a;--on:#1a2e22;--in:#2e2418;--adv:#1e2030}
+:root{--p:#1F4E79;--s:#2e7d32;--e:#c62828;--bg:#f5f7fa;--c:#fff;--t:#222;--m:#666;--b:#e0e4ea}
+[data-theme=dark]{--p:#5B9BD5;--s:#66bb6a;--e:#ef5350;--bg:#121820;--c:#1c2530;--t:#e8eaed;--m:#9aa0a6;--b:#2d3744}
 *{box-sizing:border-box;margin:0;padding:0}
-button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;color:inherit}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.45;padding-bottom:60px}
-header{background:linear-gradient(135deg,#1F4E79,#2E75B6);color:#fff;padding:14px 12px 10px;text-align:center;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px rgba(0,0,0,.2)}
-header h1{font-size:1.2rem}header p{opacity:.9;font-size:.78rem;margin-top:2px}
-.tools{margin-top:7px}.tools button{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;padding:5px 11px;border-radius:16px;font-size:.72rem;font-weight:600}
-.tabs{display:flex;flex-wrap:wrap;gap:5px;padding:9px 6px;justify-content:center}
+button{font-family:inherit;cursor:pointer;color:inherit}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--t);line-height:1.45;padding-bottom:60px}
+header{background:linear-gradient(135deg,#1F4E79,#2E75B6);color:#fff;padding:14px;text-align:center;position:sticky;top:0;z-index:20}
+.tabs{display:flex;flex-wrap:wrap;gap:5px;padding:9px;justify-content:center}
 .tab{padding:7px 10px;border:2px solid var(--b);border-radius:18px;background:var(--c);font-size:.74rem;font-weight:600;color:var(--p)}
 .tab.active{background:var(--p);color:#fff;border-color:var(--p)}
 .sec{display:none;max-width:720px;margin:0 auto;padding:8px 11px 20px}.sec.active{display:block}
 .card{background:var(--c);border-radius:12px;padding:13px;margin-bottom:11px;border:1px solid var(--b)}
-.card h2{font-size:.98rem;color:var(--p);margin-bottom:6px}
-.rule{padding:10px;border-radius:8px;margin-bottom:7px;border-left:5px solid;font-size:.85rem}
-.rule.at{background:var(--at);border-color:#1976d2}.rule.on{background:var(--on);border-color:#388e3c}
-.rule.in{background:var(--in);border-color:#f57c00}.rule.adv{background:var(--adv);border-color:#5c6bc0}
-.rule b{display:block;margin-bottom:2px}.ex{font-style:italic;color:var(--m);font-size:.78rem}
 .q{font-weight:600;margin-bottom:6px;font-size:.9rem}
 .opts{display:flex;flex-direction:column;gap:5px}
-.opt{padding:10px 11px;border:2px solid var(--b);border-radius:8px;background:var(--c);text-align:left;font-size:.86rem}
+.opt{padding:10px;border:2px solid var(--b);border-radius:8px;background:var(--c);text-align:left;font-size:.86rem}
 .opt.ok{border-color:var(--s);background:rgba(46,125,50,.12);color:var(--s)}
 .opt.bad{border-color:var(--e);background:rgba(198,40,40,.12);color:var(--e)}
 .opt.dis{pointer-events:none}
-.fb{font-size:.78rem;margin-top:4px;min-height:1.1em}.fb.ok{color:var(--s)}.fb.bad{color:var(--e)}
-.score{text-align:center;font-weight:600;padding:8px;background:var(--bg);border-radius:8px;margin-top:9px;font-size:.9rem}
-.btn{padding:8px 14px;border:none;border-radius:8px;background:var(--p);color:#fff;font-weight:600;font-size:.82rem;margin:3px 2px}
+.fb{font-size:.78rem;margin-top:4px}.fb.ok{color:var(--s)}.fb.bad{color:var(--e)}
+.score{text-align:center;font-weight:600;padding:8px;background:var(--bg);border-radius:8px;margin-top:9px}
+.btn{padding:8px 14px;border:none;border-radius:8px;background:var(--p);color:#fff;font-weight:600;margin:3px}
 .btn.sec{background:var(--c);color:var(--p);border:2px solid var(--b)}
 .gap{margin-bottom:11px;padding:11px;background:var(--bg);border-radius:8px}
-.gap label{display:block;margin-bottom:5px;font-size:.88rem}
-.gap input{width:100%;max-width:150px;padding:8px;border:2px solid var(--b);border-radius:7px;text-align:center;font-weight:600;font-size:.95rem;background:var(--c);color:var(--t)}
+.gap input{width:120px;padding:8px;border:2px solid var(--b);border-radius:7px;text-align:center;font-weight:600;background:var(--c);color:var(--t)}
 .gap input.ok{border-color:var(--s)}.gap input.bad{border-color:var(--e)}
 .hint{font-size:.76rem;color:var(--m);margin-bottom:9px}
 .match{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.match-col{display:flex;flex-direction:column;gap:6px}
-.mbtn{padding:10px;border:2px solid var(--b);border-radius:9px;background:var(--c);text-align:left;font-size:.84rem}
-.mbtn.sel{border-color:var(--p);background:rgba(31,78,121,.12)}
-.mbtn.ok{border-color:var(--s);background:rgba(46,125,50,.12);color:var(--s);pointer-events:none}
-.mbtn.bad{border-color:var(--e);background:rgba(198,40,40,.12)}
-@media(max-width:480px){.match{grid-template-columns:1fr}}
+.mbtn{padding:10px;border:2px solid var(--b);border-radius:9px;background:var(--c);text-align:left;font-size:.84rem;margin-bottom:6px}
+.mbtn.sel{border-color:var(--p)}.mbtn.ok{border-color:var(--s);color:var(--s);pointer-events:none}.mbtn.bad{border-color:var(--e)}
+.rule{padding:10px;border-radius:8px;margin-bottom:7px;border-left:5px solid;font-size:.85rem;background:var(--bg)}
 </style>
 </head>
 <body>
 <header>
   <h1>Предлоги времени</h1>
-  <p>Basic · Intermediate · Advanced · разные типы заданий</p>
-  <div class="tools"><button type="button" onclick="document.documentElement.toggleAttribute('data-theme')">🌓 Тема</button></div>
+  <p style="opacity:.9;font-size:.78rem">Basic · Intermediate · Advanced</p>
+  <button type="button" style="margin-top:8px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:5px 12px;border-radius:16px;font-size:.75rem" onclick="(function(d){d.setAttribute('data-theme',d.getAttribute('data-theme')==='dark'?'':'dark')})(document.documentElement)">🌓 Тема</button>
 </header>
 <div class="tabs">
   <button class="tab active" data-t="rules" onclick="go('rules')">📖 Правила</button>
@@ -63,191 +51,41 @@ header h1{font-size:1.2rem}header p{opacity:.9;font-size:.78rem;margin-top:2px}
   <button class="tab" data-t="fix" onclick="go('fix')">🔍 Ошибки</button>
   <button class="tab" data-t="mix" onclick="go('mix')">🎯 Микс</button>
 </div>
-
 <div class="sec active" id="rules">
   <div class="card">
-    <h2>Basic: at / in / on</h2>
-    <div class="rule at"><b>AT</b> точное время, ночь, еда, возраст<br><span class="ex">at 7 p.m., at night, at breakfast, at 25, at Easter</span></div>
-    <div class="rule on"><b>ON</b> дни, даты, Day-праздники<br><span class="ex">on Monday, on 5 May, on Christmas Day, on my birthday</span></div>
-    <div class="rule in"><b>IN</b> месяцы, годы, сезоны, части дня, «через»<br><span class="ex">in June, in 2026, in winter, in the morning, in 10 minutes</span></div>
-    <div class="rule adv"><b>БЕЗ предлога</b> last / next / this / every · yesterday / today / tomorrow</div>
-  </div>
-  <div class="card">
-    <h2>Пары и Intermediate / Advanced</h2>
-    <div class="rule adv">
-      <b>on time</b> = вовремя · <b>in time</b> = успеть<br>
-      <b>at the end</b> = в конце · <b>in the end</b> = в итоге<br>
-      <b>since</b> с момента · <b>by</b> к сроку · <b>until</b> до · <b>for</b> как долго · <b>during</b> когда (+noun) · <b>while</b> пока (+clause) · <b>within</b> в срок · <b>ago</b> назад
-    </div>
+    <div class="rule" style="border-color:#1976d2"><b>AT</b> точное время, ночь, еда · at 7 p.m., at night, at breakfast</div>
+    <div class="rule" style="border-color:#388e3c"><b>ON</b> дни, даты · on Monday, on 5 May, on Christmas Day</div>
+    <div class="rule" style="border-color:#f57c00"><b>IN</b> месяцы, годы, сезоны, «через» · in June, in 2026, in the morning, in 10 minutes</div>
+    <div class="rule" style="border-color:#5c6bc0"><b>БЕЗ</b> last / next / this / every · yesterday / today / tomorrow</div>
+    <div class="rule" style="border-color:#5c6bc0"><b>Пары:</b> on time = вовремя · in time = успеть · at the end / in the end · since · by · until · for · during · while · within · ago</div>
   </div>
 </div>
-
-<div class="sec" id="choice">
-  <div class="card">
-    <h2>Выбери правильный предлог</h2>
-    <p class="hint">Basic + Intermediate + Advanced</p>
-    <div id="cList"></div>
-    <div class="score" id="cScore">0 / 0</div>
-    <button class="btn sec" onclick="renderC()">Сбросить</button>
-  </div>
-</div>
-
-<div class="sec" id="fill">
-  <div class="card">
-    <h2>Вставь предлог (или «-»)</h2>
-    <p class="hint">Маленькими буквами. Если не нужен — поставь -</p>
-    <div id="fList"></div>
-    <button class="btn" onclick="checkF()">Проверить</button>
-    <button class="btn sec" onclick="renderF()">Сбросить</button>
-    <div class="score" id="fScore">0 / 0</div>
-  </div>
-</div>
-
-<div class="sec" id="match">
-  <div class="card">
-    <h2>Соедини выражение и значение / предлог</h2>
-    <p class="hint">Нажми слева, потом справа</p>
-    <div class="match">
-      <div class="match-col" id="mLeft"></div>
-      <div class="match-col" id="mRight"></div>
-    </div>
-    <div class="score" id="mScore">0 / 0</div>
-    <button class="btn sec" onclick="renderMatch()">Перемешать</button>
-  </div>
-</div>
-
-<div class="sec" id="fix">
-  <div class="card">
-    <h2>Найди правильный вариант</h2>
-    <p class="hint">Выбери предложение без ошибки</p>
-    <div id="eList"></div>
-    <div class="score" id="eScore">0 / 0</div>
-    <button class="btn sec" onclick="renderE()">Сбросить</button>
-  </div>
-</div>
-
-<div class="sec" id="mix">
-  <div class="card">
-    <h2>Смешанная практика (все уровни)</h2>
-    <div id="xList"></div>
-    <div class="score" id="xScore">0 / 0</div>
-    <button class="btn sec" onclick="renderX()">Сбросить</button>
-  </div>
-</div>
-
+<div class="sec" id="choice"><div class="card"><h2 style="color:var(--p);font-size:1rem">Выбери правильный предлог</h2><p class="hint">Варианты перемешаны</p><div id="cList"></div><div class="score" id="cScore">0 / 0</div><button class="btn sec" onclick="renderC()">Сбросить</button></div></div>
+<div class="sec" id="fill"><div class="card"><h2 style="color:var(--p);font-size:1rem">Вставь предлог (или -)</h2><div id="fList"></div><button class="btn" onclick="checkF()">Проверить</button><button class="btn sec" onclick="renderF()">Сбросить</button><div class="score" id="fScore">0 / 0</div></div></div>
+<div class="sec" id="match"><div class="card"><h2 style="color:var(--p);font-size:1rem">Соедини</h2><p class="hint">Нажми слева, потом справа</p><div class="match"><div id="mLeft"></div><div id="mRight"></div></div><div class="score" id="mScore">0 / 0</div><button class="btn sec" onclick="renderMatch()">Перемешать</button></div></div>
+<div class="sec" id="fix"><div class="card"><h2 style="color:var(--p);font-size:1rem">Найди правильный вариант</h2><div id="eList"></div><div class="score" id="eScore">0 / 0</div><button class="btn sec" onclick="renderE()">Сбросить</button></div></div>
+<div class="sec" id="mix"><div class="card"><h2 style="color:var(--p);font-size:1rem">Микс</h2><div id="xList"></div><div class="score" id="xScore">0 / 0</div><button class="btn sec" onclick="renderX()">Сбросить</button></div></div>
 <script>
-const C=[
-{q:"The train leaves ___ 8.30.",o:["at","in","on","-"],a:0,c:"Точное время → at"},
-{q:"We travel ___ summer.",o:["in","on","at","-"],a:0,c:"Времена года → in"},
-{q:"The meeting is ___ Friday.",o:["on","in","at","-"],a:0,c:"День → on"},
-{q:"She was born ___ 1998.",o:["in","on","at","-"],a:0,c:"Год → in"},
-{q:"I can’t sleep ___ night.",o:["at","in","on","-"],a:0,c:"at night"},
-{q:"I’ll call ___ ten minutes.",o:["in","at","on","by"],a:0,c:"через → in"},
-{q:"I saw him ___ last week.",o:["-","on","in","at"],a:0,c:"last → без"},
-{q:"I have lived here ___ 2019.",o:["since","for","from","by"],a:0,c:"since"},
-{q:"Finish the report ___ Friday.",o:["by","until","since","in"],a:0,c:"by = к сроку"},
-{q:"She waited ___ 8 p.m.",o:["until","by","since","for"],a:0,c:"until"},
-{q:"He left two months ___.",o:["ago","before","since","for"],a:0,c:"ago"},
-{q:"I studied English ___ three years.",o:["for","during","since","while"],a:0,c:"for = How long?"},
-{q:"He fell asleep ___ the movie.",o:["during","for","while","in"],a:0,c:"during + noun"},
-{q:"Kids played ___ mother cooked.",o:["while","during","for","since"],a:0,c:"while + clause"},
-{q:"Reply ___ 24 hours.",o:["within","for","during","by"],a:0,c:"within"},
-{q:"He came ___ time (точно).",o:["on","in","at","-"],a:0,c:"on time"},
-{q:"We arrived just ___ time.",o:["in","on","at","-"],a:0,c:"in time"},
-{q:"___ the end everything was fine.",o:["In","At","On","-"],a:0,c:"in the end"}
-];
+const C=[{q:"The train leaves ___ 8.30.",o:["on","in","-","at"],a:3,c:"Точное время → at"},{q:"We travel ___ summer.",o:["on","at","in","-"],a:2,c:"Времена года → in"},{q:"The meeting is ___ Friday.",o:["in","at","-","on"],a:3,c:"День → on"},{q:"She was born ___ 1998.",o:["on","at","in","-"],a:2,c:"Год → in"},{q:"I can’t sleep ___ night.",o:["in","on","-","at"],a:3,c:"at night"},{q:"I’ll call ___ ten minutes.",o:["at","on","by","in"],a:3,c:"через → in"},{q:"I saw him ___ last week.",o:["on","in","-","at"],a:2,c:"last → без"},{q:"I have lived here ___ 2019.",o:["for","from","since","by"],a:2,c:"since"},{q:"Finish the report ___ Friday.",o:["by","until","since","in"],a:0,c:"by = к сроку"},{q:"She waited ___ 8 p.m.",o:["by","since","until","for"],a:2,c:"until"},{q:"He left two months ___.",o:["before","since","for","ago"],a:3,c:"ago"},{q:"I studied English ___ three years.",o:["during","since","while","for"],a:3,c:"for = How long?"},{q:"He fell asleep ___ the movie.",o:["for","while","during","in"],a:2,c:"during + noun"},{q:"Kids played ___ mother cooked.",o:["during","for","since","while"],a:3,c:"while + clause"},{q:"Reply ___ 24 hours.",o:["within","for","during","by"],a:0,c:"within"},{q:"He came ___ time (точно).",o:["in","on","at","-"],a:1,c:"on time"},{q:"We arrived just ___ time.",o:["on","at","-","in"],a:3,c:"in time"},{q:"___ the end everything was fine.",o:["At","On","In","-"],a:2,c:"in the end"}];
 let cd=0,cc=0;
 function renderC(){cd=0;cc=0;document.getElementById("cList").innerHTML=C.map((x,i)=>`<div style="margin-bottom:13px"><div class="q">${i+1}. ${x.q}</div><div class="opts">${x.o.map((o,j)=>`<button type="button" class="opt" onclick="ansC(${i},${j})">${o}</button>`).join("")}</div><div class="fb" id="cf${i}"></div></div>`).join("");document.getElementById("cScore").textContent="0 / 0"}
 function ansC(i,j){const x=C[i],bt=document.querySelectorAll(`#cList > div:nth-child(${i+1}) .opt`);if(bt[0].classList.contains("dis"))return;bt.forEach(b=>b.classList.add("dis"));cd++;const f=document.getElementById("cf"+i);if(j===x.a){bt[j].classList.add("ok");cc++;f.className="fb ok";f.textContent="✓ "+x.c}else{bt[j].classList.add("bad");bt[x.a].classList.add("ok");f.className="fb bad";f.textContent="✗ "+x.c}document.getElementById("cScore").textContent=cc+" / "+cd}
-
-const F=[
-{q:"The lesson starts ___ 10 a.m.",a:"at",c:"Точное время"},
-{q:"We go to the beach ___ summer.",a:"in",c:"Времена года"},
-{q:"My birthday is ___ 3 July.",a:"on",c:"Дата"},
-{q:"I’ll call you ___ an hour.",a:"in",c:"через"},
-{q:"I met her ___ last year.",a:"-",c:"last → без"},
-{q:"I’ve known him ___ 2018.",a:"since",c:"since"},
-{q:"Submit it ___ Monday.",a:"by",c:"by = к сроку"},
-{q:"They lived there ___ five years.",a:"for",c:"for"},
-{q:"He fell asleep ___ the film.",a:"during",c:"during"},
-{q:"She waited ___ 9 p.m.",a:"until",c:"until"},
-{q:"We arrived just ___ time.",a:"in",c:"in time"},
-{q:"He came ___ time (точно).",a:"on",c:"on time"},
-{q:"___ the end everything was fine.",a:"in",c:"in the end"},
-{q:"Kids played ___ mother cooked.",a:"while",c:"while"},
-{q:"Reply ___ 24 hours.",a:"within",c:"within"},
-{q:"The package arrives ___ two days.",a:"within",c:"within = в срок"},
-{q:"We worked ___ 9 to 5.",a:"from",c:"from … to"}
-];
-function renderF(){document.getElementById("fList").innerHTML=F.map((x,i)=>`<div class="gap"><label>${i+1}. ${x.q}</label><input id="fi${i}" autocomplete="off" autocapitalize="none" placeholder="предлог или -"><div class="fb" id="ff${i}"></div></div>`).join("");document.getElementById("fScore").textContent="0 / 0"}
+const F=[{q:"The lesson starts ___ 10 a.m.",a:"at",c:"Точное время"},{q:"We go to the beach ___ summer.",a:"in",c:"Времена года"},{q:"My birthday is ___ 3 July.",a:"on",c:"Дата"},{q:"I’ll call you ___ an hour.",a:"in",c:"через"},{q:"I met her ___ last year.",a:"-",c:"last → без"},{q:"I’ve known him ___ 2018.",a:"since",c:"since"},{q:"Submit it ___ Monday.",a:"by",c:"by"},{q:"They lived there ___ five years.",a:"for",c:"for"},{q:"He fell asleep ___ the film.",a:"during",c:"during"},{q:"She waited ___ 9 p.m.",a:"until",c:"until"},{q:"We arrived just ___ time.",a:"in",c:"in time"},{q:"He came ___ time (точно).",a:"on",c:"on time"},{q:"___ the end everything was fine.",a:"in",c:"in the end"},{q:"Kids played ___ mother cooked.",a:"while",c:"while"},{q:"Reply ___ 24 hours.",a:"within",c:"within"}];
+function renderF(){document.getElementById("fList").innerHTML=F.map((x,i)=>`<div class="gap"><label>${i+1}. ${x.q}</label><br><input id="fi${i}" autocomplete="off" placeholder="предлог или -"><div class="fb" id="ff${i}"></div></div>`).join("");document.getElementById("fScore").textContent="0 / 0"}
 function checkF(){let c=0;F.forEach((x,i)=>{const v=(document.getElementById("fi"+i).value||"").trim().toLowerCase();const f=document.getElementById("ff"+i);if(v===x.a){document.getElementById("fi"+i).className="ok";f.className="fb ok";f.textContent="✓ "+x.c;c++}else{document.getElementById("fi"+i).className="bad";f.className="fb bad";f.textContent="✗ «"+x.a+"». "+x.c}});document.getElementById("fScore").textContent=c+" / "+F.length}
-
-const pairs=[
-{l:"at 7 p.m.",r:"точное время"},
-{l:"on Monday",r:"день недели"},
-{l:"in June",r:"месяц"},
-{l:"in the morning",r:"часть дня"},
-{l:"at night",r:"ночь (исключение)"},
-{l:"in two weeks",r:"через (Future)"},
-{l:"last week",r:"без предлога"},
-{l:"on time",r:"вовремя (точно)"},
-{l:"in time",r:"успеть / заранее"},
-{l:"since 2015",r:"с момента до сейчас"},
-{l:"by Friday",r:"к сроку (не позже)"},
-{l:"for two years",r:"как долго"},
-{l:"during the film",r:"когда (во время)"},
-{l:"until 6 p.m.",r:"до / пока не"},
-{l:"while she cooked",r:"пока (два действия)"},
-{l:"within 24 hours",r:"в какой срок"}
-];
+const pairs=[{l:"at 7 p.m.",r:"точное время"},{l:"on Monday",r:"день недели"},{l:"in June",r:"месяц"},{l:"in the morning",r:"часть дня"},{l:"at night",r:"ночь"},{l:"in two weeks",r:"через"},{l:"last week",r:"без предлога"},{l:"on time",r:"вовремя"},{l:"in time",r:"успеть"},{l:"since 2015",r:"с момента"},{l:"by Friday",r:"к сроку"},{l:"for two years",r:"как долго"},{l:"during the film",r:"когда"},{l:"until 6 p.m.",r:"до"},{l:"while she cooked",r:"пока"},{l:"within 24 hours",r:"в срок"}];
 let mSel=null,mDone=0;
 function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
-function renderMatch(){mDone=0;mSel=null;const L=shuffle(pairs.map((p,i)=>({t:p.l,id:i})));const R=shuffle(pairs.map((p,i)=>({t:p.r,id:i})));
-document.getElementById("mLeft").innerHTML=L.map(p=>`<button type="button" class="mbtn" data-id="${p.id}" data-side="L" onclick="selM(this)">${p.t}</button>`).join("");
-document.getElementById("mRight").innerHTML=R.map(p=>`<button type="button" class="mbtn" data-id="${p.id}" data-side="R" onclick="selM(this)">${p.t}</button>`).join("");
-document.getElementById("mScore").textContent="0 / "+pairs.length}
-function selM(btn){if(btn.classList.contains("ok"))return;if(!mSel){document.querySelectorAll(".mbtn.sel").forEach(b=>b.classList.remove("sel"));btn.classList.add("sel");mSel=btn;return}
-if(mSel===btn){btn.classList.remove("sel");mSel=null;return}
-if(mSel.dataset.side===btn.dataset.side){mSel.classList.remove("sel");btn.classList.add("sel");mSel=btn;return}
-if(mSel.dataset.id===btn.dataset.id){mSel.classList.remove("sel");mSel.classList.add("ok");btn.classList.add("ok");mSel=null;mDone++;document.getElementById("mScore").textContent=mDone+" / "+pairs.length}
-else{mSel.classList.add("bad");btn.classList.add("bad");const a=mSel;setTimeout(()=>{a.classList.remove("bad","sel");btn.classList.remove("bad")},450);mSel=null}}
-
-const E=[
-{q:"Я видел его в прошлый понедельник.",o:["I saw him last Monday.","I saw him on last Monday.","I saw him in last Monday."],a:0,c:"last → без предлога"},
-{q:"Встреча в 5 часов.",o:["The meeting is at 5 o’clock.","The meeting is in 5 o’clock.","The meeting is on 5 o’clock."],a:0,c:"Точное время → at"},
-{q:"Мы поедем в июне.",o:["We will go in June.","We will go on June.","We will go at June."],a:0,c:"месяц → in"},
-{q:"Он пришёл вовремя (точно).",o:["He came on time.","He came in time.","He came at time."],a:0,c:"on time = точно"},
-{q:"В конце концов всё получилось.",o:["In the end everything worked out.","At the end everything worked out.","On the end everything worked out."],a:0,c:"in the end = в итоге"},
-{q:"Я живу здесь с 2020 года.",o:["I have lived here since 2020.","I have lived here for 2020.","I have lived here from 2020."],a:0,c:"since"},
-{q:"Сдай работу к пятнице.",o:["Submit the work by Friday.","Submit the work until Friday.","Submit the work since Friday."],a:0,c:"by = к сроку"},
-{q:"Она спала во время фильма.",o:["She slept during the film.","She slept for the film.","She slept while the film."],a:0,c:"during + noun"},
-{q:"Мы прожили там два года.",o:["We lived there for two years.","We lived there during two years.","We lived there since two years."],a:0,c:"for = длительность"},
-{q:"Дети играли, пока мама готовила.",o:["Kids were playing while their mother was cooking.","Kids were playing during their mother was cooking.","Kids were playing for their mother was cooking."],a:0,c:"while + clause"},
-{q:"Ответь в течение 24 часов.",o:["Reply within 24 hours.","Reply for 24 hours.","Reply during 24 hours."],a:0,c:"within"},
-{q:"Он ушёл два месяца назад.",o:["He left two months ago.","He left two months before.","He left two months since."],a:0,c:"ago"}
-];
+function renderMatch(){mDone=0;mSel=null;const L=shuffle(pairs.map((p,i)=>({t:p.l,id:i})));const R=shuffle(pairs.map((p,i)=>({t:p.r,id:i})));document.getElementById("mLeft").innerHTML=L.map(p=>`<button type="button" class="mbtn" data-id="${p.id}" data-side="L" onclick="selM(this)">${p.t}</button>`).join("");document.getElementById("mRight").innerHTML=R.map(p=>`<button type="button" class="mbtn" data-id="${p.id}" data-side="R" onclick="selM(this)">${p.t}</button>`).join("");document.getElementById("mScore").textContent="0 / "+pairs.length}
+function selM(btn){if(btn.classList.contains("ok"))return;if(!mSel){document.querySelectorAll(".mbtn.sel").forEach(b=>b.classList.remove("sel"));btn.classList.add("sel");mSel=btn;return}if(mSel===btn){btn.classList.remove("sel");mSel=null;return}if(mSel.dataset.side===btn.dataset.side){mSel.classList.remove("sel");btn.classList.add("sel");mSel=btn;return}if(mSel.dataset.id===btn.dataset.id){mSel.classList.remove("sel");mSel.classList.add("ok");btn.classList.add("ok");mSel=null;mDone++;document.getElementById("mScore").textContent=mDone+" / "+pairs.length}else{mSel.classList.add("bad");btn.classList.add("bad");const a=mSel;setTimeout(()=>{a.classList.remove("bad","sel");btn.classList.remove("bad")},450);mSel=null}}
+const E=[{q:"Я видел его в прошлый понедельник.",o:["I saw him in last Monday.","I saw him on last Monday.","I saw him last Monday."],a:2,c:"last → без"},{q:"Встреча в 5 часов.",o:["The meeting is at 5 o’clock.","The meeting is in 5 o’clock.","The meeting is on 5 o’clock."],a:0,c:"at"},{q:"Мы поедем в июне.",o:["We will go in June.","We will go on June.","We will go at June."],a:0,c:"in"},{q:"Он пришёл вовремя (точно).",o:["He came in time.","He came at time.","He came on time."],a:2,c:"on time"},{q:"В конце концов всё получилось.",o:["At the end everything worked out.","In the end everything worked out.","On the end everything worked out."],a:1,c:"in the end"},{q:"Я живу здесь с 2020.",o:["I have lived here since 2020.","I have lived here for 2020.","I have lived here from 2020."],a:0,c:"since"},{q:"Сдай работу к пятнице.",o:["Submit the work until Friday.","Submit the work by Friday.","Submit the work since Friday."],a:1,c:"by"},{q:"Она спала во время фильма.",o:["She slept for the film.","She slept during the film.","She slept while the film."],a:1,c:"during"},{q:"Мы прожили там два года.",o:["We lived there during two years.","We lived there for two years.","We lived there since two years."],a:1,c:"for"},{q:"Дети играли, пока мама готовила.",o:["Kids were playing during their mother was cooking.","Kids were playing for their mother was cooking.","Kids were playing while their mother was cooking."],a:2,c:"while"},{q:"Ответь в течение 24 часов.",o:["Reply within 24 hours.","Reply for 24 hours.","Reply during 24 hours."],a:0,c:"within"},{q:"Он ушёл два месяца назад.",o:["He left two months before.","He left two months ago.","He left two months since."],a:1,c:"ago"}];
 let ed=0,ec=0;
 function renderE(){ed=0;ec=0;document.getElementById("eList").innerHTML=E.map((x,i)=>`<div style="margin-bottom:13px"><div class="q">${i+1}. ${x.q}</div><div class="opts">${x.o.map((o,j)=>`<button type="button" class="opt" onclick="ansE(${i},${j})">${o}</button>`).join("")}</div><div class="fb" id="ef${i}"></div></div>`).join("");document.getElementById("eScore").textContent="0 / 0"}
 function ansE(i,j){const x=E[i],bt=document.querySelectorAll(`#eList > div:nth-child(${i+1}) .opt`);if(bt[0].classList.contains("dis"))return;bt.forEach(b=>b.classList.add("dis"));ed++;const f=document.getElementById("ef"+i);if(j===x.a){bt[j].classList.add("ok");ec++;f.className="fb ok";f.textContent="✓ "+x.c}else{bt[j].classList.add("bad");bt[x.a].classList.add("ok");f.className="fb bad";f.textContent="✗ "+x.c}document.getElementById("eScore").textContent=ec+" / "+ed}
-
-const X=[
-{q:"The concert is ___ Saturday evening.",o:["on","in","at","-"],a:0,c:"on + день"},
-{q:"I’ll be back ___ a couple of days.",o:["in","after","for","by"],a:0,c:"in = через"},
-{q:"She has worked here ___ March.",o:["since","for","from","during"],a:0,c:"since"},
-{q:"We must leave ___ 7 at the latest.",o:["by","until","to","in"],a:0,c:"by"},
-{q:"I read a lot ___ my holidays.",o:["during","for","while","in"],a:0,c:"during"},
-{q:"___ Christmas we usually travel.",o:["At","On","In","-"],a:0,c:"at Christmas = период"},
-{q:"The exam is ___ the end of June.",o:["at","in","on","by"],a:0,c:"at the end of"},
-{q:"I finished the course two months ___.",o:["ago","before","since","for"],a:0,c:"ago"},
-{q:"Please finish ___ Friday.",o:["by","until","since","in"],a:0,c:"by"},
-{q:"They talked ___ the whole meeting.",o:["during","for","since","by"],a:0,c:"during / throughout"},
-{q:"We waited ___ the rain stopped.",o:["until","by","for","during"],a:0,c:"until"},
-{q:"He has kept the secret ___ now.",o:["up to","for","during","since"],a:0,c:"up to / until now"}
-];
+const X=[{q:"The concert is ___ Saturday evening.",o:["in","-","on","at"],a:2,c:"on"},{q:"I’ll be back ___ a couple of days.",o:["after","for","by","in"],a:3,c:"in"},{q:"She has worked here ___ March.",o:["for","from","since","during"],a:2,c:"since"},{q:"We must leave ___ 7 at the latest.",o:["until","to","by","in"],a:2,c:"by"},{q:"I read a lot ___ my holidays.",o:["during","for","while","in"],a:0,c:"during"},{q:"___ Christmas we usually travel.",o:["On","At","In","-"],a:1,c:"at Christmas"},{q:"The exam is ___ the end of June.",o:["at","in","on","by"],a:0,c:"at the end of"},{q:"I finished the course two months ___.",o:["ago","before","since","for"],a:0,c:"ago"},{q:"Please finish ___ Friday.",o:["until","since","by","in"],a:2,c:"by"},{q:"They talked ___ the whole meeting.",o:["for","since","during","by"],a:2,c:"during"},{q:"We waited ___ the rain stopped.",o:["by","for","during","until"],a:3,c:"until"},{q:"He has kept the secret ___ now.",o:["for","up to","during","since"],a:1,c:"up to"}];
 let xd=0,xc=0;
 function renderX(){xd=0;xc=0;document.getElementById("xList").innerHTML=X.map((x,i)=>`<div style="margin-bottom:13px"><div class="q">${i+1}. ${x.q}</div><div class="opts">${x.o.map((o,j)=>`<button type="button" class="opt" onclick="ansX(${i},${j})">${o}</button>`).join("")}</div><div class="fb" id="xf${i}"></div></div>`).join("");document.getElementById("xScore").textContent="0 / 0"}
 function ansX(i,j){const x=X[i],bt=document.querySelectorAll(`#xList > div:nth-child(${i+1}) .opt`);if(bt[0].classList.contains("dis"))return;bt.forEach(b=>b.classList.add("dis"));xd++;const f=document.getElementById("xf"+i);if(j===x.a){bt[j].classList.add("ok");xc++;f.className="fb ok";f.textContent="✓ "+x.c}else{bt[j].classList.add("bad");bt[x.a].classList.add("ok");f.className="fb bad";f.textContent="✗ "+x.c}document.getElementById("xScore").textContent=xc+" / "+xd}
-
 function go(id){document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.t===id));document.querySelectorAll(".sec").forEach(s=>s.classList.toggle("active",s.id===id))}
 renderC();renderF();renderMatch();renderE();renderX();
 </script>
