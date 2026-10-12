@@ -2,28 +2,142 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F4E79">
 <title>Предлоги времени</title>
+<style>
+:root{--p:#1F4E79;--s:#2e7d32;--e:#c62828;--bg:#f5f7fa;--c:#fff;--t:#222;--m:#666;--b:#e0e4ea}
+[data-theme=dark]{--p:#5B9BD5;--s:#66bb6a;--e:#ef5350;--bg:#121820;--c:#1c2530;--t:#e8eaed;--m:#9aa0a6;--b:#2d3744}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--t);padding-bottom:50px}
+header{background:linear-gradient(135deg,#1F4E79,#2E75B6);color:#fff;padding:14px;text-align:center;position:sticky;top:0;z-index:10}
+header h1{font-size:1.2rem}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:10px;justify-content:center}
+.tab{padding:8px 12px;border:2px solid var(--b);border-radius:20px;background:var(--c);font-size:.8rem;font-weight:600;color:var(--p);cursor:pointer}
+.tab.active{background:var(--p);color:#fff;border-color:var(--p)}
+.sec{display:none;padding:12px;max-width:700px;margin:0 auto}
+.sec.active{display:block}
+.card{background:var(--c);border-radius:12px;padding:14px;margin-bottom:10px;border:1px solid var(--b)}
+.q{font-weight:600;margin-bottom:6px;font-size:.92rem}
+.opts{display:flex;flex-direction:column;gap:5px}
+.opt{padding:10px;border:2px solid var(--b);border-radius:8px;background:var(--c);text-align:left;font-size:.88rem;cursor:pointer}
+.opt.ok{border-color:var(--s);background:rgba(46,125,50,.12);color:var(--s)}
+.opt.bad{border-color:var(--e);background:rgba(198,40,40,.12);color:var(--e)}
+.opt.dis{pointer-events:none}
+.fb{font-size:.8rem;margin-top:5px;min-height:1.2em}
+.fb.ok{color:var(--s)}.fb.bad{color:var(--e)}
+.score{text-align:center;font-weight:600;padding:8px;background:var(--bg);border-radius:8px;margin-top:8px}
+.btn{padding:9px 14px;border:none;border-radius:8px;background:var(--p);color:#fff;font-weight:600;cursor:pointer;margin:4px}
+.rule{padding:10px;border-radius:8px;margin-bottom:8px;border-left:4px solid}
+.rule.at{background:#e3f2fd;border-color:#1976d2}
+.rule.on{background:#e8f5e9;border-color:#388e3c}
+.rule.in{background:#fff3e0;border-color:#f57c00}
+.rule.no{background:#f3e5f5;border-color:#8e24aa}
+[data-theme=dark] .rule.at{background:#1a2a3a}[data-theme=dark] .rule.on{background:#1a2e22}
+[data-theme=dark] .rule.in{background:#2e2418}[data-theme=dark] .rule.no{background:#2a1f2e}
+ul{margin-left:16px;font-size:.85rem}
+.ex{font-style:italic;color:var(--m);font-size:.8rem}
+</style>
 </head>
-<body style="font-family:system-ui;text-align:center;padding:40px;background:#f5f7fa;color:#333">
-<p id="s">Загрузка…</p>
+<body>
+<header>
+<h1>Предлоги времени</h1>
+<p style="opacity:.9;font-size:.8rem">at · in · on + practice</p>
+<button class="btn" style="margin-top:6px;background:rgba(255,255,255,.2);font-size:.75rem" onclick="document.documentElement.toggleAttribute('data-theme')">🌓 Тема</button>
+</header>
+<div class="tabs">
+<button class="tab active" onclick="go('rules')">📖 Правила</button>
+<button class="tab" onclick="go('mcq')">✅ Тест</button>
+<button class="tab" onclick="go('fill')">✏️ Пропуски</button>
+<button class="tab" onclick="go('mix')">🎯 Микс</button>
+</div>
+
+<div class="sec active" id="rules">
+<div class="card">
+<div class="rule at"><b>AT</b> — точное время<br><span class="ex">at 5 o’clock, at night, at breakfast, at 19, at Easter</span></div>
+<div class="rule on"><b>ON</b> — дни и даты<br><span class="ex">on Monday, on 5 May, on Christmas Day, on my birthday</span></div>
+<div class="rule in"><b>IN</b> — длинные периоды<br><span class="ex">in May, in 2026, in winter, in the morning, in 10 minutes</span></div>
+<div class="rule no"><b>БЕЗ предлога</b><br><span class="ex">last Monday, next week, this month, every day, yesterday, today, tomorrow</span></div>
+<div class="rule at" style="border-color:#5c6bc0"><b>Важно:</b> on time = вовремя · in time = успеть<br>at the end = в конце · in the end = в итоге<br>since 2015 · by Friday · for 2 years · during the film</div>
+</div>
+</div>
+
+<div class="sec" id="mcq">
+<div class="card" id="mcqList"></div>
+<div class="score" id="mcqScore">0 / 0</div>
+<button class="btn" onclick="renderMcq()">Сбросить</button>
+</div>
+
+<div class="sec" id="fill">
+<div class="card" id="fillList"></div>
+<button class="btn" onclick="checkFill()">Проверить</button>
+<button class="btn" style="background:var(--m)" onclick="renderFill()">Сбросить</button>
+<div class="score" id="fillScore">0 / 0</div>
+</div>
+
+<div class="sec" id="mix">
+<div class="card" id="mixList"></div>
+<div class="score" id="mixScore">0 / 0</div>
+<button class="btn" onclick="renderMix()">Сбросить</button>
+</div>
+
 <script>
-(async()=>{
-  try{
-    const n=7;
-    let s="";
-    for(let i=0;i<n;i++){
-      const r=await fetch("c"+i+".txt");
-      if(!r.ok) throw new Error("chunk "+i+" "+r.status);
-      s+=await r.text();
-    }
-    const b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));
-    const html=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
-    document.open();document.write(html);document.close();
-  }catch(e){
-    document.getElementById("s").innerHTML="<b style=color:#c62828>Ошибка: "+e.message+"</b>";
-  }
-})();
+const mcq=[
+{q:"The meeting starts ___ 9 o’clock.",o:["at","in","on","-"],a:0,c:"Точное время → at"},
+{q:"I wake up ___ the morning.",o:["in","at","on","-"],a:0,c:"Части дня → in the morning"},
+{q:"She was born ___ 15 March.",o:["on","in","at","-"],a:0,c:"Дата → on"},
+{q:"We go skiing ___ winter.",o:["in","on","at","-"],a:0,c:"Времена года → in"},
+{q:"See you ___ Monday!",o:["on","in","at","-"],a:0,c:"День недели → on"},
+{q:"He left ___ 2022.",o:["in","on","at","-"],a:0,c:"Год → in"},
+{q:"I can’t sleep ___ night.",o:["at","in","on","-"],a:0,c:"at night"},
+{q:"They married ___ Christmas Day.",o:["on","at","in","-"],a:0,c:"on + Day"},
+{q:"I’ll be ready ___ ten minutes.",o:["in","at","on","by"],a:0,c:"«через» → in"},
+{q:"I saw her ___ last Friday.",o:["-","on","in","at"],a:0,c:"last → без предлога"},
+{q:"He came ___ time (вовремя).",o:["on","in","at","-"],a:0,c:"on time = точно"},
+{q:"We arrived just ___ time.",o:["in","on","at","-"],a:0,c:"in time = успели"},
+{q:"___ the end of the month.",o:["At","In","On","-"],a:0,c:"at the end of"},
+{q:"___ the end everything was fine.",o:["In","At","On","-"],a:0,c:"in the end = в итоге"},
+{q:"I have lived here ___ 2019.",o:["since","for","from","by"],a:0,c:"since + точка"}
+];
+let md=0,mc=0;
+function renderMcq(){md=0;mc=0;document.getElementById("mcqList").innerHTML=mcq.map((x,i)=>`<div style="margin-bottom:12px"><div class="q">${i+1}. ${x.q}</div><div class="opts">${x.o.map((o,j)=>`<button class="opt" onclick="ansM(${i},${j})">${o}</button>`).join("")}</div><div class="fb" id="mf${i}"></div></div>`).join("");updM()}
+function ansM(i,j){const x=mcq[i],bt=document.querySelectorAll(`#mcqList > div:nth-child(${i+1}) .opt`);if(bt[0].classList.contains("dis"))return;bt.forEach(b=>b.classList.add("dis"));md++;const f=document.getElementById("mf"+i);if(j===x.a){bt[j].classList.add("ok");mc++;f.className="fb ok";f.textContent="✓ "+x.c}else{bt[j].classList.add("bad");bt[x.a].classList.add("ok");f.className="fb bad";f.textContent="✗ "+x.c}updM()}
+function updM(){document.getElementById("mcqScore").textContent=mc+" / "+md}
+
+const fill=[
+{q:"The lesson starts ___ 10 a.m.",a:"at",c:"Точное время"},
+{q:"We go to the beach ___ summer.",a:"in",c:"Времена года"},
+{q:"My birthday is ___ 3 July.",a:"on",c:"Дата"},
+{q:"I’ll call you ___ an hour.",a:"in",c:"через"},
+{q:"She works ___ the morning.",a:"in",c:"in the morning"},
+{q:"He was born ___ 1995.",a:"in",c:"Год"},
+{q:"See you ___ Friday!",a:"on",c:"День"},
+{q:"I met her ___ last year.",a:"-",c:"last → без"},
+{q:"The shop closes ___ midnight.",a:"at",c:"at midnight"},
+{q:"I’ve known him ___ 2018.",a:"since",c:"since"}
+];
+function renderFill(){document.getElementById("fillList").innerHTML=fill.map((x,i)=>`<div style="margin-bottom:10px"><label>${i+1}. ${x.q}</label><br><input id="fi${i}" style="padding:8px;border:2px solid var(--b);border-radius:6px;width:120px;text-align:center;font-weight:600;margin-top:4px"><div class="fb" id="ff${i}"></div></div>`).join("");document.getElementById("fillScore").textContent="0 / 0"}
+function checkFill(){let c=0;fill.forEach((x,i)=>{const v=(document.getElementById("fi"+i).value||"").trim().toLowerCase();const f=document.getElementById("ff"+i);if(v===x.a){document.getElementById("fi"+i).style.borderColor="var(--s)";f.className="fb ok";f.textContent="✓ "+x.c;c++}else{document.getElementById("fi"+i).style.borderColor="var(--e)";f.className="fb bad";f.textContent="✗ «"+x.a+"». "+x.c}});document.getElementById("fillScore").textContent=c+" / "+fill.length}
+
+const mix=[
+{q:"The concert is ___ Saturday.",o:["on","in","at","-"],a:0,c:"on + день"},
+{q:"I’ll be back ___ a couple of days.",o:["in","after","for","by"],a:0,c:"in = через"},
+{q:"She has worked here ___ March.",o:["since","for","from","during"],a:0,c:"since"},
+{q:"Finish the report ___ Friday.",o:["by","until","since","in"],a:0,c:"by = к сроку"},
+{q:"She slept ___ the film.",o:["during","for","while","in"],a:0,c:"during + noun"},
+{q:"We lived there ___ two years.",o:["for","during","since","by"],a:0,c:"for = длительность"},
+{q:"___ Christmas we travel.",o:["At","On","In","-"],a:0,c:"at Christmas = период"},
+{q:"The exam is ___ the end of June.",o:["at","in","on","by"],a:0,c:"at the end of"},
+{q:"I finished two months ___.",o:["ago","before","since","for"],a:0,c:"ago"},
+{q:"Kids played ___ mother cooked.",o:["while","during","for","since"],a:0,c:"while + clause"}
+];
+let xd=0,xc=0;
+function renderMix(){xd=0;xc=0;document.getElementById("mixList").innerHTML=mix.map((x,i)=>`<div style="margin-bottom:12px"><div class="q">${i+1}. ${x.q}</div><div class="opts">${x.o.map((o,j)=>`<button class="opt" onclick="ansX(${i},${j})">${o}</button>`).join("")}</div><div class="fb" id="xf${i}"></div></div>`).join("");updX()}
+function ansX(i,j){const x=mix[i],bt=document.querySelectorAll(`#mixList > div:nth-child(${i+1}) .opt`);if(bt[0].classList.contains("dis"))return;bt.forEach(b=>b.classList.add("dis"));xd++;const f=document.getElementById("xf"+i);if(j===x.a){bt[j].classList.add("ok");xc++;f.className="fb ok";f.textContent="✓ "+x.c}else{bt[j].classList.add("bad");bt[x.a].classList.add("ok");f.className="fb bad";f.textContent="✗ "+x.c}updX()}
+function updX(){document.getElementById("mixScore").textContent=xc+" / "+xd}
+
+function go(id){document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",["rules","mcq","fill","mix"][i]===id));document.querySelectorAll(".sec").forEach(s=>s.classList.toggle("active",s.id===id))}
+renderMcq();renderFill();renderMix();
 </script>
 </body>
 </html>
