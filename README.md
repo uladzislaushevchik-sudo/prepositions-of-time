@@ -1,2 +1,20 @@
-# prepositions-of-time
-Interactive English practice: Prepositions of Time (at / in / on + intermediate &amp; advanced)
+# Предлоги времени · Interactive Practice
+
+Интерактивные упражнения по предлогам времени (at / in / on + intermediate & advanced).
+
+Основано на презентации «Предлоги времени».
+
+## Открыть сейчас (с телефона)
+
+https://uladzislaushevchik-sudo.github.io/prepositions-of-time/
+
+## Что внутри
+
+- Краткие правила (Basic / Intermediate / Advanced)
+- Выбор правильного предлога (с комментариями)
+- Заполнение пропусков
+- Исправление ошибок
+- Matching
+- Смешанная практика
+- Подсчёт баллов + объяснения
+- Тёмная тема, работает на телефоне

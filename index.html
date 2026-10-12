@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Предлоги времени">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="theme-color" content="#1F4E79">
-  <title>Предлоги времени · Interactive Practice</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Предлоги времени · Interactive</title>
 </head>
 <body>
-<p>Loading… Please use the full version from artifacts or wait for update.</p>
+<p style="font-family:system-ui;text-align:center;margin-top:40px">Загрузка…</p>
+<script>
+async function go() {
+  const names = ["c0.txt","c1.txt","c2.txt","c3.txt","c4.txt"];
+  const parts = await Promise.all(names.map(n => fetch(n).then(r => r.text())));
+  const bin = atob(parts.join(""));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+  const html = await new Response(stream).text();
+  document.open(); document.write(html); document.close();
+}
+go().catch(e => {
+  document.body.innerHTML = "<p style=\"font-family:system-ui;text-align:center;color:red\">Ошибка: "+e+"</p>";
+});
+</script>
 </body>
 </html>
